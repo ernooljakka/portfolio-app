@@ -1,20 +1,28 @@
-import express from 'express';
-import cors from 'cors';
-import dotenv from 'dotenv';
-
-dotenv.config();
+import express from "express";
+import cors from "cors";
+import { PORT } from "./utils/config.js";
+import { connectToDatabase } from "./utils/db.js";
+import "./models/index.js";
 
 const app = express();
-const PORT = process.env.PORT || 5000;
 
 // Middlewares
-app.use(cors());
+app.use(
+  cors({
+    origin: "http://localhost:5173",
+  })
+);
 app.use(express.json());
 
-app.get('/', (req, res) => {
-  res.send('Backend is running!');
+app.get("/", (req, res) => {
+  res.send("Backend is running!");
 });
 
-app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
-});
+const start = async () => {
+  await connectToDatabase();
+  app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+  });
+};
+
+start();
