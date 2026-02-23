@@ -5,6 +5,7 @@ import { connectToDatabase } from "./utils/db.js";
 import "./models/index.js";
 
 import userRouter from "./controllers/users.js";
+import loginRouter from "./controllers/login.js";
 
 const app = express();
 
@@ -17,6 +18,7 @@ app.use(
 app.use(express.json());
 
 app.use("/api/users", userRouter);
+app.use("/api/login", loginRouter);
 
 app.get("/", (req, res) => {
   res.send("Backend is running!");

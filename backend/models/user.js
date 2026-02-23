@@ -14,7 +14,7 @@ export const User = sequelize.define("User", {
   },
   email: {
     type: DataTypes.STRING,
-    allowNull: false,
+    allowNull: true,
     unique: true,
     validate: {
       isEmail: true,
@@ -27,6 +27,7 @@ export const User = sequelize.define("User", {
   bio: {
     type: DataTypes.TEXT,
     allowNull: true,
+    defaultValue: "No bio yet.",
   },
   role: {
     type: DataTypes.STRING,

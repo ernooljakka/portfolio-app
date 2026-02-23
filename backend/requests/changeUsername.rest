@@ -1,0 +1,5 @@
+PUT http://localhost:5000/api/users/username
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Miwicm9sZSI6InVzZXIiLCJpYXQiOjE3NzE4NDkxOTIsImV4cCI6MTc3MTg1Mjc5Mn0.CEkqiwZH0lMFWorKSQmnnsWPqVQQXAkFOtpOyf1_AOU
+Content-Type: application/json
+
+{ "username": "Shade" }
