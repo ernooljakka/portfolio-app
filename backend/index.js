@@ -4,6 +4,8 @@ import { PORT } from "./utils/config.js";
 import { connectToDatabase } from "./utils/db.js";
 import "./models/index.js";
 
+import userRouter from "./controllers/users.js";
+
 const app = express();
 
 // Middlewares
@@ -13,6 +15,8 @@ app.use(
   })
 );
 app.use(express.json());
+
+app.use("/api/users", userRouter);
 
 app.get("/", (req, res) => {
   res.send("Backend is running!");

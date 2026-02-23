@@ -4,5 +4,8 @@
   },
   "devDependencies": {
     "prettier": "^3.8.1"
+  },
+  "dependencies": {
+    "bcrypt": "^6.0.0"
   }
 }
