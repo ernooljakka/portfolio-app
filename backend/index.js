@@ -7,6 +7,7 @@ import { errorHandler } from "./utils/middleware.js";
 
 import userRouter from "./controllers/users.js";
 import loginRouter from "./controllers/login.js";
+import projectRouter from "./controllers/projects.js";
 
 const app = express();
 
@@ -20,6 +21,7 @@ app.use(express.json());
 
 app.use("/api/users", userRouter);
 app.use("/api/login", loginRouter);
+app.use("/api/projects", projectRouter);
 
 app.use(errorHandler);
 

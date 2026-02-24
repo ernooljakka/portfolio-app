@@ -1,4 +1,5 @@
 import { User } from "../models/user.js";
+import { Project } from "../models/project.js";
 import { Router } from "express";
 import bcrypt from "bcrypt";
 import { tokenExtractor } from "../utils/middleware.js";
@@ -8,6 +9,10 @@ const router = Router();
 router.get("/", async (req, res) => {
   const users = await User.findAll({
     attributes: { exclude: ["passwordHash"] },
+    include: {
+      model: Project,
+      attributes: { exclude: ["userId", "createdAt", "updatedAt"] },
+    },
   });
   res.json(users);
 });
@@ -82,6 +87,28 @@ router.put("/bio", tokenExtractor, async (req, res, next) => {
     res.json(userData);
   } catch (error) {
     next(error);
+  }
+});
+
+// Delete user, only self can delete user
+router.delete("/:id", tokenExtractor, async (req, res) => {
+  try {
+    const user = await User.findByPk(req.params.id);
+
+    if (!user) {
+      return res.status(404).json({ error: "User not found" });
+    }
+
+    // Only allow deleting own account (or expand later for admin)
+    if (user.id !== req.decodedToken.id) {
+      return res.status(403).json({ error: "Forbidden" });
+    }
+
+    await user.destroy();
+
+    res.status(204).end();
+  } catch (error) {
+    next(error); // passes to your global error handler
   }
 });
 

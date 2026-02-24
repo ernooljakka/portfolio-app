@@ -1,0 +1,4 @@
+### Delete a project by ID
+DELETE http://localhost:5000/api/projects/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Miwicm9sZSI6InVzZXIiLCJpYXQiOjE3NzE5MTk3NDMsImV4cCI6MTc3MTkyMzM0M30.b5UIDv5Aa_zXQ6Glu4MQnEkHX-DrmTYpxkiF4nC3ZJI
+Content-Type: application/json

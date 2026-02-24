@@ -1,0 +1,12 @@
+### Create a new project
+POST http://localhost:5000/api/projects
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Miwicm9sZSI6InVzZXIiLCJpYXQiOjE3NzE5MTk0NzEsImV4cCI6MTc3MTkyMzA3MX0.hmZ3d1QKJaOtAgjlEUuRyCSJDhzOrEIHvmpZqVaRlug
+Content-Type: application/json
+
+{
+  "title": "My Portfolio Project",
+  "description": "This is a test project",
+  "projectURL": "https://example.com",
+  "imageURL": "https://example.com/image.png",
+  "techStack": ["React", "Node.js", "PostgreSQL"]
+}
