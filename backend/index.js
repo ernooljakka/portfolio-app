@@ -3,6 +3,7 @@ import cors from "cors";
 import { PORT } from "./utils/config.js";
 import { connectToDatabase } from "./utils/db.js";
 import "./models/index.js";
+import { errorHandler } from "./utils/middleware.js";
 
 import userRouter from "./controllers/users.js";
 import loginRouter from "./controllers/login.js";
@@ -19,6 +20,8 @@ app.use(express.json());
 
 app.use("/api/users", userRouter);
 app.use("/api/login", loginRouter);
+
+app.use(errorHandler);
 
 app.get("/", (req, res) => {
   res.send("Backend is running!");

@@ -12,7 +12,7 @@ router.get("/", async (req, res) => {
   res.json(users);
 });
 
-router.get("/:id", async (req, res) => {
+router.get("/:id", async (req, res, next) => {
   try {
     const user = await User.findByPk(req.params.id, {
       attributes: { exclude: ["passwordHash"] },
@@ -24,12 +24,11 @@ router.get("/:id", async (req, res) => {
 
     res.json(user);
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: "Internal server error" });
+    next(error);
   }
 });
 
-router.post("/", async (req, res) => {
+router.post("/", async (req, res, next) => {
   try {
     const { username, email, password } = req.body;
 
@@ -46,12 +45,12 @@ router.post("/", async (req, res) => {
 
     res.status(201).json(userData);
   } catch (error) {
-    return res.status(400).json({ error });
+    next(error);
   }
 });
 
 // Change username
-router.put("/username", tokenExtractor, async (req, res) => {
+router.put("/username", tokenExtractor, async (req, res, next) => {
   try {
     const user = await User.findByPk(req.decodedToken.id);
     if (!user) {
@@ -64,13 +63,12 @@ router.put("/username", tokenExtractor, async (req, res) => {
     const { passwordHash, ...userData } = user.toJSON();
     res.json(userData);
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: "Internal server error" });
+    next(error);
   }
 });
 
 // Change bio PUT
-router.put("/bio", tokenExtractor, async (req, res) => {
+router.put("/bio", tokenExtractor, async (req, res, next) => {
   try {
     const user = await User.findByPk(req.decodedToken.id);
     if (!user) {
@@ -83,8 +81,7 @@ router.put("/bio", tokenExtractor, async (req, res) => {
     const { passwordHash, ...userData } = user.toJSON();
     res.json(userData);
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: "Internal server error" });
+    next(error);
   }
 });
 

@@ -19,3 +19,44 @@ export const tokenExtractor = (req, res, next) => {
 };
 
 // Error handler
+export const errorHandler = (error, req, res, next) => {
+  //console.error("ERROR:", error);
+
+  if (error.name === "SequelizeValidationError") {
+    return res.status(400).json({
+      error: "Validation failed",
+    });
+  }
+
+  if (error.name === "SequelizeUniqueConstraintError") {
+    return res.status(400).json({
+      error: "Unique constraint failed",
+      fields: error.errors?.map((e) => e.path) || [],
+    });
+  }
+
+  if (error.name === "SequelizeForeignKeyConstraintError") {
+    return res.status(400).json({
+      error: "Invalid foreign key",
+    });
+  }
+
+  if (error.name === "SequelizeDatabaseError") {
+    return res.status(400).json({
+      error: "Database error",
+      details: error.message,
+    });
+  }
+
+  if (error.name === "JsonWebTokenError") {
+    return res.status(401).json({ error: "Invalid token" });
+  }
+
+  if (error.name === "TokenExpiredError") {
+    return res.status(401).json({ error: "Token expired" });
+  }
+
+  return res.status(500).json({
+    error: "Internal Server Error",
+  });
+};
