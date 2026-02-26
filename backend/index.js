@@ -38,7 +38,7 @@ app.get("/", (req, res) => {
 const start = async () => {
   await connectToDatabase();
   app.listen(PORT, () => {
-    console.log(`Server running on port http://localhost:${PORT}`);
+    console.log(`Server running on port http://localhost:${PORT}/`);
   });
 };
 

@@ -1,6 +1,6 @@
 ### Create a new project
 POST http://localhost:5000/api/projects
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTYsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzcyMTAzOTI2LCJleHAiOjE3NzIxMDc1MjZ9.grVS881Dv2hyU2blzpm-q2NYBsuJvUn66frYPBjp89U
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTYsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzcyMTA4MjA3LCJleHAiOjE3NzIxMTE4MDd9.VkNj4HWOcCgUBW_Ys8dCtCFsdqUcxjJvHSebZYaYvtM
 Content-Type: application/json
 
 {

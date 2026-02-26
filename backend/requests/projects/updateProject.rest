@@ -1,6 +1,6 @@
 ### Update a project by ID
 PUT http://localhost:5000/api/projects/2
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Miwicm9sZSI6InVzZXIiLCJpYXQiOjE3NzIxMDMzOTQsImV4cCI6MTc3MjEwNjk5NH0.WEBfiqRC5Jm958jXs_1FMh2XsigCCOWEyPZMBrSruao
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTYsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzcyMTA4MjA3LCJleHAiOjE3NzIxMTE4MDd9.VkNj4HWOcCgUBW_Ys8dCtCFsdqUcxjJvHSebZYaYvtM
 Content-Type: application/json  
 
 {

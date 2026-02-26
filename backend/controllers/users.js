@@ -2,7 +2,8 @@ import { User } from "../models/user.js";
 import { Project } from "../models/project.js";
 import { Router } from "express";
 import bcrypt from "bcrypt";
-import { tokenExtractor } from "../utils/middleware.js";
+import { tokenExtractor, validate } from "../utils/middleware.js";
+import { createUserSchema, updateUsernameSchema, updateBioSchema } from "../validators/user.js";
 
 const router = Router();
 
@@ -33,7 +34,7 @@ router.get("/:id", async (req, res, next) => {
   }
 });
 
-router.post("/", async (req, res, next) => {
+router.post("/", validate(createUserSchema), async (req, res, next) => {
   try {
     const { username, email, password } = req.body;
 
@@ -55,7 +56,7 @@ router.post("/", async (req, res, next) => {
 });
 
 // Change username
-router.put("/username", tokenExtractor, async (req, res, next) => {
+router.put("/username", tokenExtractor, validate(updateUsernameSchema), async (req, res, next) => {
   try {
     const user = await User.findByPk(req.decodedToken.id);
     if (!user) {
@@ -73,7 +74,7 @@ router.put("/username", tokenExtractor, async (req, res, next) => {
 });
 
 // Change bio PUT
-router.put("/bio", tokenExtractor, async (req, res, next) => {
+router.put("/bio", tokenExtractor, validate(updateBioSchema), async (req, res, next) => {
   try {
     const user = await User.findByPk(req.decodedToken.id);
     if (!user) {

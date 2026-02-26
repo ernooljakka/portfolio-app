@@ -1,5 +1,5 @@
 PUT http://localhost:5000/api/users/username
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Miwicm9sZSI6InVzZXIiLCJpYXQiOjE3NzE4NDkxOTIsImV4cCI6MTc3MTg1Mjc5Mn0.CEkqiwZH0lMFWorKSQmnnsWPqVQQXAkFOtpOyf1_AOU
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTYsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzcyMTA3OTMyLCJleHAiOjE3NzIxMTE1MzJ9.jxgiwQhFreZr0wT3zhhjHzxCPrR9gV3J9HSpKaIMZmc
 Content-Type: application/json
 
-{ "username": "Shade2" }
+{ "username": "Shade" }

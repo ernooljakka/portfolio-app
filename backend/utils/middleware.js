@@ -1,5 +1,6 @@
 import jwt from "jsonwebtoken";
 import { JWT_SECRET } from "./config.js";
+import { ZodError } from "zod";
 
 // JWT auth check
 export const tokenExtractor = (req, res, next) => {
@@ -16,6 +17,26 @@ export const tokenExtractor = (req, res, next) => {
     return res.status(401).json({ error: "token missing" });
   }
   next();
+};
+
+// Zod validation
+
+export const validate = (schema) => (req, res, next) => {
+  try {
+    schema.parse(req.body);
+    next();
+  } catch (error) {
+    if (error instanceof ZodError) {
+      return res.status(400).json({
+        error: "Validation failed",
+        details: error.issues.map((e) => ({
+          field: e.path.join("."),
+          message: e.message,
+        })),
+      });
+    }
+    next(error); // fallback for other errors
+  }
 };
 
 // Error handler

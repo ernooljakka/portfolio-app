@@ -1,6 +1,8 @@
 import { Router } from "express";
 import { tokenExtractor } from "../utils/middleware.js";
 import { Project } from "../models/project.js";
+import { validate } from "../utils/middleware.js";
+import { createProjectSchema, updateProjectSchema } from "../validators/project.js";
 
 const router = Router();
 
@@ -25,7 +27,7 @@ router.get("/all", async (req, res, next) => {
   }
 });
 
-router.post("/", tokenExtractor, async (req, res, next) => {
+router.post("/", tokenExtractor, validate(createProjectSchema), async (req, res, next) => {
   try {
     const userId = req.decodedToken.id;
     const project = await Project.create({
@@ -39,7 +41,7 @@ router.post("/", tokenExtractor, async (req, res, next) => {
 });
 
 // UPDATE project by ID (only owner can update)
-router.put("/:id", tokenExtractor, async (req, res, next) => {
+router.put("/:id", tokenExtractor, validate(updateProjectSchema), async (req, res, next) => {
   try {
     const project = await Project.findByPk(req.params.id);
 

@@ -1,5 +1,5 @@
 PUT http://localhost:5000/api/users/bio
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Miwicm9sZSI6InVzZXIiLCJpYXQiOjE3NzE4NDkxOTIsImV4cCI6MTc3MTg1Mjc5Mn0.CEkqiwZH0lMFWorKSQmnnsWPqVQQXAkFOtpOyf1_AOU
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTYsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzcyMTA4MDAxLCJleHAiOjE3NzIxMTE2MDF9.lUTi9kqPBQF2_6kkrg2z03JJ65nUcXLgIEt0iV5cIpg
 Content-Type: application/json
 
 { "bio": "Web developer with heart of gold" }
