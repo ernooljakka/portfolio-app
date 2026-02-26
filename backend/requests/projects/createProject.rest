@@ -1,12 +1,12 @@
 ### Create a new project
 POST http://localhost:5000/api/projects
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Miwicm9sZSI6InVzZXIiLCJpYXQiOjE3NzE5MTk0NzEsImV4cCI6MTc3MTkyMzA3MX0.hmZ3d1QKJaOtAgjlEUuRyCSJDhzOrEIHvmpZqVaRlug
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTYsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzcyMTAzOTI2LCJleHAiOjE3NzIxMDc1MjZ9.grVS881Dv2hyU2blzpm-q2NYBsuJvUn66frYPBjp89U
 Content-Type: application/json
 
 {
-  "title": "My Portfolio Project",
-  "description": "This is a test project",
-  "projectURL": "https://example.com",
-  "imageURL": "https://example.com/image.png",
-  "techStack": ["React", "Node.js", "PostgreSQL"]
+  "title": "Calculator app",
+  "description": "Simple calculator",
+  "projectURL": "https://calculator.com",
+  "imageURL": "https://calculator.com/image.png",
+  "techStack": ["React", "JS"]
 }

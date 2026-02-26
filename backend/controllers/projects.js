@@ -38,6 +38,35 @@ router.post("/", tokenExtractor, async (req, res, next) => {
   }
 });
 
+// UPDATE project by ID (only owner can update)
+router.put("/:id", tokenExtractor, async (req, res, next) => {
+  try {
+    const project = await Project.findByPk(req.params.id);
+
+    if (!project) {
+      return res.status(404).json({ error: "Project not found" });
+    }
+
+    // Only allow updating if the logged-in user owns the project
+    if (project.userId !== req.decodedToken.id) {
+      return res.status(403).json({ error: "Forbidden" });
+    }
+
+    //Prevent id or userId from being updated
+    Object.keys(req.body).forEach((field) => {
+      if (field !== "id" && field !== "userId") {
+        project[field] = req.body[field];
+      }
+    });
+
+    await project.save();
+
+    res.json(project);
+  } catch (error) {
+    next(error);
+  }
+});
+
 // Delete a project by ID
 router.delete("/:id", tokenExtractor, async (req, res, next) => {
   try {

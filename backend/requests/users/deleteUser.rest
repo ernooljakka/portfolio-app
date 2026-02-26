@@ -1,4 +1,4 @@
 ### Delete a user by ID
-DELETE http://localhost:5000/api/users/13
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzcxOTE4NTU5LCJleHAiOjE3NzE5MjIxNTl9.SMG05p_5ZmDEQP-rZ_uv-OjElcHnpFjVilOVVfNZEkw
+DELETE http://localhost:5000/api/users/2
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Miwicm9sZSI6InVzZXIiLCJpYXQiOjE3NzIxMDM4NzMsImV4cCI6MTc3MjEwNzQ3M30.G30YwTAJ6skqDbpFdiHXGkCZcQufg4zVBO8s-KgGEpY
 Content-Type: application/json

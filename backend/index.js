@@ -26,13 +26,19 @@ app.use("/api/projects", projectRouter);
 app.use(errorHandler);
 
 app.get("/", (req, res) => {
-  res.send("Backend is running!");
+  res.send(`
+    <h1>Backend is running!</h1>
+    <ul>
+      <li><a href="http://localhost:5000/api/projects/all">All Projects</a></li>
+      <li><a href="http://localhost:5000/api/users">Users</a></li>
+    </ul>
+  `);
 });
 
 const start = async () => {
   await connectToDatabase();
   app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
+    console.log(`Server running on port http://localhost:${PORT}`);
   });
 };
 

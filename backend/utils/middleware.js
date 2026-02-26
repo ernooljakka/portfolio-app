@@ -20,7 +20,7 @@ export const tokenExtractor = (req, res, next) => {
 
 // Error handler
 export const errorHandler = (error, req, res, next) => {
-  //console.error("ERROR:", error);
+  console.error("ERROR:", error);
 
   if (error.name === "SequelizeValidationError") {
     return res.status(400).json({

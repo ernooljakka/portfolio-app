@@ -1,0 +1,12 @@
+### Update a project by ID
+PUT http://localhost:5000/api/projects/2
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Miwicm9sZSI6InVzZXIiLCJpYXQiOjE3NzIxMDMzOTQsImV4cCI6MTc3MjEwNjk5NH0.WEBfiqRC5Jm958jXs_1FMh2XsigCCOWEyPZMBrSruao
+Content-Type: application/json  
+
+{
+  "title": "Updated Project Title",
+  "description": "Updated description for the project",
+  "projectURL": "https://updated-example.com",
+  "imageURL": "https://updated-example.com/image.png",
+  "techStack": ["React", "Node.js"]
+}
