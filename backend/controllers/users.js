@@ -18,6 +18,25 @@ router.get("/", async (req, res) => {
   res.json(users);
 });
 
+// Get logged-in user
+router.get("/me", tokenExtractor, async (req, res, next) => {
+  try {
+    const userId = req.decodedToken.id;
+
+    const user = await User.findByPk(userId, {
+      attributes: { exclude: ["passwordHash"] },
+    });
+
+    if (!user) {
+      return res.status(404).json({ error: "User not found" });
+    }
+
+    res.json(user);
+  } catch (error) {
+    next(error);
+  }
+});
+
 router.get("/:id", async (req, res, next) => {
   try {
     const user = await User.findByPk(req.params.id, {

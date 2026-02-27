@@ -1,8 +1,10 @@
 import { Router } from "express";
+import { Op } from "sequelize";
 import { tokenExtractor } from "../utils/middleware.js";
 import { Project } from "../models/project.js";
 import { validate } from "../utils/middleware.js";
 import { createProjectSchema, updateProjectSchema } from "../validators/project.js";
+import { User } from "../models/user.js";
 
 const router = Router();
 
@@ -20,7 +22,26 @@ router.get("/", tokenExtractor, async (req, res, next) => {
 // GET all projects
 router.get("/all", async (req, res, next) => {
   try {
-    const projects = await Project.findAll();
+    const { tech } = req.query;
+
+    const where = tech
+      ? {
+          techStack: {
+            [Op.contains]: (Array.isArray(tech) ? tech : [tech]).map((t) => t.toLowerCase().trim()),
+          },
+        }
+      : {};
+
+    const projects = await Project.findAll({
+      where,
+      attributes: { exclude: ["userId"] },
+      include: {
+        model: User,
+        attributes: ["id", "username"],
+      },
+      order: [["createdAt", "DESC"]],
+    });
+
     res.json(projects);
   } catch (error) {
     next(error);

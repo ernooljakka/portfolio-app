@@ -39,9 +39,20 @@ export const Project = sequelize.define("Project", {
     },
   },
   techStack: {
-    type: DataTypes.JSON,
+    type: DataTypes.JSONB,
     allowNull: true,
     defaultValue: [],
+
+    set(value) {
+      if (!value) {
+        this.setDataValue("techStack", []);
+        return;
+      }
+
+      const normalized = [...new Set(value.map((tech) => tech.toLowerCase().trim()))];
+
+      this.setDataValue("techStack", normalized);
+    },
   },
   createdAt: {
     type: DataTypes.DATE,
