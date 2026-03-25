@@ -111,7 +111,7 @@ router.put("/bio", tokenExtractor, validate(updateBioSchema), async (req, res, n
 });
 
 // Delete user, only self can delete user
-router.delete("/:id", tokenExtractor, async (req, res) => {
+router.delete("/:id", tokenExtractor, async (req, res, next) => {
   try {
     const user = await User.findByPk(req.params.id);
 
@@ -128,7 +128,7 @@ router.delete("/:id", tokenExtractor, async (req, res) => {
 
     res.status(204).end();
   } catch (error) {
-    next(error); // passes to your global error handler
+    next(error);
   }
 });
 
