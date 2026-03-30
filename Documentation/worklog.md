@@ -12,9 +12,9 @@
 | 26.2  | 1    | Zod validation for user and project             |
 | 27.2  | 2    | Seed file, project filtering, users/me route    |
 | 25.3  | 3    | user and auth services (front) and testing them |
+| 30.3  | 2    | Tailwind tutorial                               |
+| 30.3  | 2    | Project service and testing it                  |
 |       |      |                                                 |
 |       |      |                                                 |
 |       |      |                                                 |
-|       |      |                                                 |
-|       |      |                                                 |
-| Total | 14   |
+| Total | 21   |

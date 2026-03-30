@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import userService from "./services/userService";
 import authService from "./services/authService";
+import projectService from "./services/projectService";
 
 const App = () => {
   //const [token, setToken] = useState("");
@@ -8,7 +9,7 @@ const App = () => {
   useEffect(() => {
     const run = async () => {
       const credentials = {
-        username: "shade",
+        username: "nova",
         password: "password123",
       };
 
@@ -16,14 +17,15 @@ const App = () => {
 
       console.log(loggedUser);
 
-      userService.setToken(loggedUser.token);
+      projectService.setToken(loggedUser.token);
       //const updated = await userService.updateUsername("Erno123");
 
       //const updatedBio = await userService.updateBio("noobie");
 
       //const me = await userService.getMe();
 
-      await userService.deleteUser(loggedUser.user.id);
+      const projects = await projectService.getAllProjects({ tech: ["vue"] });
+      console.log(projects);
     };
 
     run();
