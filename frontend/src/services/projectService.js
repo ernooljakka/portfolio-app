@@ -32,7 +32,6 @@ const getAllProjects = async (filters = {}) => {
 };
 
 // Create project
-
 const createProject = async (projectData) => {
   const config = {
     headers: {

@@ -14,7 +14,7 @@
 | 25.3  | 3    | user and auth services (front) and testing them |
 | 30.3  | 2    | Tailwind tutorial                               |
 | 30.3  | 2    | Project service and testing it                  |
+| 30.3  | 4    | Redux Store and project, auth and user slices   |
 |       |      |                                                 |
 |       |      |                                                 |
-|       |      |                                                 |
-| Total | 21   |
+| Total | 25   |
