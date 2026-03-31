@@ -29,8 +29,8 @@ app.get("/", (req, res) => {
   res.send(`
     <h1>Backend is running!</h1>
     <ul>
-      <li><a href="http://localhost:5000/api/projects/all">All Projects</a></li>
-      <li><a href="http://localhost:5000/api/users">Users</a></li>
+      <li><a href="http://localhost:3000/api/projects/all">All Projects</a></li>
+      <li><a href="http://localhost:3000/api/users">Users</a></li>
     </ul>
   `);
 });
