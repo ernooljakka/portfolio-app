@@ -12,7 +12,7 @@ Follow these steps to start the application:
 npm install
 ```
 
-### 2. Start the application by running the development script
+### 2. Start the application by running the development script (root folder)
 
 ```bash
 npm run dev
