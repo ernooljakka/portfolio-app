@@ -1,9 +1,13 @@
 {
   "scripts": {
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "dev": "concurrently \"npm run backend\" \"npm run frontend\"",
+    "backend": "cd backend && npm install && docker compose up -d && ping -n 6 127.0.0.1 > nul && npm run seed && npm run dev",
+    "frontend": "cd frontend && npm install && npm run dev"
   },
   "devDependencies": {
-    "prettier": "^3.8.1"
+    "prettier": "^3.8.1",
+    "concurrently": "^8.2.2"
   },
   "dependencies": {
     "bcrypt": "^6.0.0"

@@ -1,27 +1,32 @@
 # portfolio-app (Unfinished)
+
 Full-stack portfolio builder app.
 
-### Follow these steps to run the project locally:
+### 🚀 Run the Project Locally
 
-### 1. Navigate to the backend folder
+Follow these steps to start the application:
+
+### 1. Install dependencies (root folder)
+
 ```bash
-cd /backend
+npm install
 ```
 
-### 2. Start the database with Docker (Requires Docker Desktop (Windows/macOS) or a Linux environment with Docker installed.)
-```bash
-docker compose up
-```
+### 2. Start the application by running the development script
 
-### 3. Seed the database with some dummy data
-```bash
-npm run seed
-```
-
-### 4. Finally start to backend with:
 ```bash
 npm run dev
 ```
 
+This command will:
+
+- Start the database using Docker (requires Docker Desktop or Linux environment)
+- Seed the database with sample data
+- Start both the backend and frontend servers
+
+🌐 Access the app
+
+- Frontend: http://localhost:5173
+- Backend API: http://localhost:3000
 
 What I have done during the project: [Worklog](https://github.com/ernooljakka/portfolio-app/blob/main/Documentation/worklog.md)

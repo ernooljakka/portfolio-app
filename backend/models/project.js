@@ -22,6 +22,14 @@ export const Project = sequelize.define("Project", {
   },
   description: {
     type: DataTypes.TEXT,
+    allowNull: false,
+  },
+  longDescription: {
+    type: DataTypes.TEXT,
+    allowNull: true,
+  },
+  githubURL: {
+    type: DataTypes.STRING,
     allowNull: true,
   },
   projectURL: {
@@ -40,7 +48,7 @@ export const Project = sequelize.define("Project", {
   },
   techStack: {
     type: DataTypes.JSONB,
-    allowNull: true,
+    allowNull: false,
     defaultValue: [],
 
     set(value) {
