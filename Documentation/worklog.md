@@ -15,6 +15,6 @@
 | 30.3  | 2    | Tailwind tutorial                               |
 | 30.3  | 2    | Project service and testing it                  |
 | 30.3  | 4    | Redux Store and project, auth and user slices   |
+| 31.3  | 5    | First UI components and pages                   |
 |       |      |                                                 |
-|       |      |                                                 |
-| Total | 25   |
+| Total | 30   |

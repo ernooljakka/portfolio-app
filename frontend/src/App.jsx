@@ -1,12 +1,19 @@
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Layout from "./components/Layout";
+import Home from "./components/pages/Home";
+import ProjectPage from "./components/pages/ProjectPage";
 
-const App = () => {
+function App() {
   return (
-    <div>
-      <p> Nothing here yet </p>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route element={<Layout />}>
+          <Route path="/" element={<Home />} />
+          <Route path="/project/:id" element={<ProjectPage />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
-};
+}
 
 export default App;
