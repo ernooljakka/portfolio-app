@@ -17,4 +17,14 @@
 | 30.3  | 4    | Redux Store and project, auth and user slices                     |
 | 31.3  | 5    | First UI components and pages                                     |
 | 31.3  | 1    | Project model changes, better script for starting the application |
-| Total | 31   |
+|  9.4  | 1    | Backend refactoring                                               |
+|       |      |                                                                   |
+|       |      |                                                                   |
+|       |      |                                                                   |
+|       |      |                                                                   |
+|       |      |                                                                   |
+|       |      |                                                                   |
+|       |      |                                                                   |
+|       |      |                                                                   |
+|       |      |                                                                   |
+| Total | 32   |

@@ -8,20 +8,25 @@ const setToken = (newToken) => {
   token = `Bearer ${newToken}`;
 };
 
-// Get projects for the logged user
+const getAuthConfig = () => ({
+  headers: token ? { Authorization: token } : {},
+});
 
-const getUserProjects = async () => {
-  const config = {
-    headers: { Authorization: token },
-  };
-  const response = await axios.get(baseUrl, config);
+// GET project by ID
+const getProjectById = async (id) => {
+  const response = await axios.get(`${baseUrl}/${id}`);
   return response.data;
 };
 
-// Get all projects with filters
+// GET logged-in user's projects
+const getUserProjects = async () => {
+  const response = await axios.get(`${baseUrl}/me`, getAuthConfig());
+  return response.data;
+};
 
+// GET all projects
 const getAllProjects = async (filters = {}) => {
-  const response = await axios.get(`${baseUrl}/all`, {
+  const response = await axios.get(baseUrl, {
     params: filters,
     paramsSerializer: {
       indexes: null,
@@ -31,38 +36,22 @@ const getAllProjects = async (filters = {}) => {
   return response.data;
 };
 
-// Create project
+// CREATE project
 const createProject = async (projectData) => {
-  const config = {
-    headers: {
-      Authorization: token,
-    },
-  };
-
-  const response = await axios.post(baseUrl, projectData, config);
+  const response = await axios.post(baseUrl, projectData, getAuthConfig());
   return response.data;
 };
 
-// Update project
+// UPDATE project
 const updateProject = async (id, updatedData) => {
-  const config = {
-    headers: {
-      Authorization: token,
-    },
-  };
-
-  const response = await axios.put(`${baseUrl}/${id}`, updatedData, config);
-
+  const response = await axios.put(`${baseUrl}/${id}`, updatedData, getAuthConfig());
   return response.data;
 };
 
-// Delete project
+// DELETE project
 const deleteProject = async (id) => {
-  const config = {
-    headers: { Authorization: token },
-  };
-
-  await axios.delete(`${baseUrl}/${id}`, config);
+  const response = await axios.delete(`${baseUrl}/${id}`, getAuthConfig());
+  return response.data;
 };
 
 export default {
@@ -72,4 +61,5 @@ export default {
   updateProject,
   deleteProject,
   getAllProjects,
+  getProjectById,
 };

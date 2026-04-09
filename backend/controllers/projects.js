@@ -8,19 +8,8 @@ import { User } from "../models/user.js";
 
 const router = Router();
 
-// GET all projects for the logged-in user
-router.get("/", tokenExtractor, async (req, res, next) => {
-  try {
-    const userId = req.decodedToken.id;
-    const projects = await Project.findAll({ where: { userId } });
-    res.json(projects);
-  } catch (error) {
-    next(error);
-  }
-});
-
-// GET all projects
-router.get("/all", async (req, res, next) => {
+// GET all projects (public)
+router.get("/", async (req, res, next) => {
   try {
     const { tech } = req.query;
 
@@ -43,6 +32,42 @@ router.get("/all", async (req, res, next) => {
     });
 
     res.json(projects);
+  } catch (error) {
+    next(error);
+  }
+});
+
+// GET logged-in user's projects
+router.get("/me", tokenExtractor, async (req, res, next) => {
+  try {
+    const userId = req.decodedToken.id;
+
+    const projects = await Project.findAll({
+      where: { userId },
+      order: [["createdAt", "DESC"]],
+    });
+
+    res.json(projects);
+  } catch (error) {
+    next(error);
+  }
+});
+
+// GET project by ID
+router.get("/:id", async (req, res, next) => {
+  try {
+    const project = await Project.findByPk(req.params.id, {
+      include: {
+        model: User,
+        attributes: ["id", "username"],
+      },
+    });
+
+    if (!project) {
+      return res.status(404).json({ error: "Project not found" });
+    }
+
+    res.json(project);
   } catch (error) {
     next(error);
   }
