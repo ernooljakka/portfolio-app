@@ -18,6 +18,7 @@
 | 31.3  | 5    | First UI components and pages                                     |
 | 31.3  | 1    | Project model changes, better script for starting the application |
 |  9.4  | 1    | Backend refactoring                                               |
+|  9.4  | 3    | project page, login/logout                                        |
 |       |      |                                                                   |
 |       |      |                                                                   |
 |       |      |                                                                   |
@@ -26,5 +27,4 @@
 |       |      |                                                                   |
 |       |      |                                                                   |
 |       |      |                                                                   |
-|       |      |                                                                   |
-| Total | 32   |
+| Total | 35   |

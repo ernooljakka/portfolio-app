@@ -11,7 +11,7 @@ const router = Router();
 // GET all projects (public)
 router.get("/", async (req, res, next) => {
   try {
-    const { tech } = req.query;
+    const { tech, limit = 20, page = 1 } = req.query;
 
     const where = tech
       ? {
@@ -23,6 +23,8 @@ router.get("/", async (req, res, next) => {
 
     const projects = await Project.findAll({
       where,
+      limit: Number(limit),
+      offset: (Number(page) - 1) * Number(limit),
       attributes: { exclude: ["userId"] },
       include: {
         model: User,

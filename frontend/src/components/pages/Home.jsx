@@ -9,12 +9,10 @@ const Home = () => {
   const { projects, loading, error } = useSelector((state) => state.projects);
 
   useEffect(() => {
-    dispatch(fetchProjects());
+    dispatch(fetchProjects({ limit: 20, page: 1 }));
   }, [dispatch]);
 
-  const latestProjects = [...projects]
-    .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
-    .slice(0, 20);
+  const latestProjects = projects;
 
   return (
     <div>
